@@ -35,7 +35,7 @@ func (g *Googl) Shorten(u *url.URL) (*url.URL, os.Error) {
 	}
 	request.LongUrl = u.String()
 
-	enc := json.NewEncoder(&buf)
+	enc := json.NewEncoder(buf)
 	if err := enc.Encode(request); err != nil {
 		return nil, err
 	}
