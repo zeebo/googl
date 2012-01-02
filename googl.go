@@ -1,11 +1,11 @@
 package googl
 
 import (
-	"url"
-	"http"
-	"os"
-	"json"
 	"bytes"
+	"net/http"
+
+	"encoding/json"
+	"net/url"
 )
 
 type Googl struct {
@@ -28,7 +28,7 @@ func (g *Googl) url() *url.URL {
 	}
 }
 
-func (g *Googl) Shorten(u *url.URL) (*url.URL, os.Error) {
+func (g *Googl) Shorten(u *url.URL) (*url.URL, error) {
 	buf := new(bytes.Buffer)
 	var request struct {
 		LongUrl string `json:"longUrl"`
